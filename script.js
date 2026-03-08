@@ -243,7 +243,7 @@ async function showDetails(id) {
 
     content.innerHTML = `
         <h2 class="text-3xl font-bold text-[#1E293B] mb-4">${data.title}</h2>
-        <div class="flex items-center gap-2 mb-6 text-sm">
+        <div class="flex items-center gap-2 mb-6 text-sm flex-wrap">
             <span class="px-3 py-1 rounded-full ${statusBg} text-white font-medium flex items-center">
               ${statusText}
             </span>
