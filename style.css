@@ -2,6 +2,12 @@
   font-family: 'Geist', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #00A96E50 transparent;
+}
+
 .active-tab {
   background-color: #4a00ff !important;
   color: white !important;
