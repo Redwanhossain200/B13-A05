@@ -1,25 +1,44 @@
-# Questions & Answers
+# 🚀 GitHub Issues Tracker | Interactive Web Tool
 
-1.What is the difference between var, let, and const?
+A sleek, responsive, and functional web application built with a focus on modern UI and seamless user experience. This project demonstrates dynamic data handling and clean frontend architecture.
 
-Ans: Var is old fashioned which has scope issues. If you declare a variable with let you can change it's value later. And const means that once the value is set it cannot be changed again.
+Live Preview : [Check out here](https://redwanhossain200.github.io/B13-A05/)
 
+### 📖 Project Overview
+This project is an interactive dashboard designed to provide a smooth user experience through real time updates. It focuses on solving specific user tasks with a clean interface, ensuring that the logic is efficient and the design is professional.
 
-2.What is the spread operator (...)?
+---
 
-Ans: It is used to remove all elements from an array or object and place them somewhere else.
+### 🛠️ Core Technologies
+* **HTML5:** Semantic structure for better accessibility.
+* **Tailwind CSS:** For modern utility first styling.
+* **DaisyUI:** For beautiful ready to use UI components.
+* **JavaScript (ES6+):** To power the interactivity and core logic.
 
+---
 
-3.What is the difference between map(), filter(), and forEach()?
+### ✨ Key Features
+* **Dynamic UI:** Real time DOM updates based on user actions.
+* **Fully Responsive:** Perfectly optimized for mobile, tablet, and desktop screens.
+* **Interactive Functionality:** Smooth handling of inputs and calculations.
+* **Modern Aesthetics:** A clean and professional look using Tailwind and DaisyUI.
 
-Ans: forEach just loops doesn't return anything. Map operates on each element and returns a new array. And filter creates a new array with only the elements that meet the condition.
+---
 
+### 📦 Dependencies
+The project is built to be lightweight and fast using the following:
+* Tailwind CSS (for the core styling)
+* Font Awesome (for scalable icons)
+* Google Fonts (for professional typography)
 
-4.What is an arrow function?
+---
 
-Ans: A short and modern way to write functions. It looks like () => {}.
+### 💻 Local Installation & Setup
+To run this project locally, follow these steps:
 
+1. **Clone the repository:**
+   ```bash
+   https://github.com/Redwanhossain200/B13-A05.git
 
-5.What are template literals?
-
-Ans: Variables can be written directly within a string using ${variable} using a backtick (`).
+### 📸 Project Preview
+<img width="100%" alt="GitHub Issues Tracker" src="https://github.com/user-attachments/assets/fd1903d1-b1cf-4d9a-96e9-14527e56c65f" />
