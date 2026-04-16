@@ -7,7 +7,7 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
   const pass = document.getElementById('password').value;
 
   if (user === 'admin' && pass === 'admin123') {
-    console.log("Login successful!");
+    console.log('Login successful!');
     document.getElementById('login-section').classList.add('hidden');
     document.getElementById('main-section').classList.remove('hidden');
     fetchIssues();
@@ -28,49 +28,53 @@ async function fetchIssues() {
   }, 10);
 
   try {
-    const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
+    const res = await fetch(
+      'https://phi-lab-server.vercel.app/api/v1/lab/issues',
+    );
     const result = await res.json();
 
-    if (result.status === "success") {
+    if (result.status === 'success') {
       allIssues = result.data;
       displayIssues(allIssues);
     }
   } catch (error) {
-    console.error("Error while fetching issues:", error);
+    console.error('Error while fetching issues:', error);
   } finally {
     spinner.classList.add('hidden');
   }
-};
+}
 
 function getLabelHTML(labels) {
-  return labels.map(l => {
-    let labelLower = l.toLowerCase();
-    let color = '';
-    let icon = '';
+  return labels
+    .map((l) => {
+      let labelLower = l.toLowerCase();
+      let color = '';
+      let icon = '';
 
-    if (labelLower.includes('bug')) {
-      color = 'bg-red-50 text-red-500 border-red-100';
-      icon = 'fa-bug';
-    } else if (labelLower.includes('help')) {
-      color = 'bg-orange-50 text-orange-500 border-orange-100';
-      icon = 'fa-hand-holding-heart';
-    } else if (labelLower.includes('enhancement')) {
-      color = 'bg-blue-50 text-blue-500 border-blue-100';
-      icon = 'fa-wand-magic-sparkles';
-    } else if (labelLower.includes('documentation')) {
-      color = 'bg-gray-50 text-gray-500 border-gray-100';
-      icon = 'fa-file-lines';
-    } else {
-      color = 'bg-green-50 text-green-500 border-green-100';
-      icon = 'fa-tag';
-    }
+      if (labelLower.includes('bug')) {
+        color = 'bg-red-50 text-red-500 border-red-100';
+        icon = 'fa-bug';
+      } else if (labelLower.includes('help')) {
+        color = 'bg-orange-50 text-orange-500 border-orange-100';
+        icon = 'fa-hand-holding-heart';
+      } else if (labelLower.includes('enhancement')) {
+        color = 'bg-blue-50 text-blue-500 border-blue-100';
+        icon = 'fa-wand-magic-sparkles';
+      } else if (labelLower.includes('documentation')) {
+        color = 'bg-gray-50 text-gray-500 border-gray-100';
+        icon = 'fa-file-lines';
+      } else {
+        color = 'bg-green-50 text-green-500 border-green-100';
+        icon = 'fa-tag';
+      }
 
-    return `<span class="label-pill ${color} flex items-center gap-1">
+      return `<span class="label-pill ${color} flex items-center gap-1">
                 <i class="fa-solid ${icon} text-[10px]"></i> 
                 ${l}
             </span>`;
-  }).join('');
-};
+    })
+    .join('');
+}
 
 function displayIssues(issues) {
   const grid = document.getElementById('issue-grid');
@@ -80,14 +84,19 @@ function displayIssues(issues) {
     countText.innerText = `${issues.length} Issues`;
   }
 
-  grid.innerHTML = issues.map(issue => {
-    const isOpen = issue.status === 'open';
-    const statusImg = isOpen ? 'Open-Status.png' : 'Closed-Status.png';
-    const statusClass = isOpen ? 'status-badge-open' : 'status-badge-closed';
-    const formattedDate = new Date(issue.createdAt).toLocaleDateString('en-GB');
-    const formattedDate2 = new Date(issue.updatedAt).toLocaleDateString('en-GB');
+  grid.innerHTML = issues
+    .map((issue) => {
+      const isOpen = issue.status === 'open';
+      const statusImg = isOpen ? 'Open-Status.png' : 'Closed-Status.png';
+      const statusClass = isOpen ? 'status-badge-open' : 'status-badge-closed';
+      const formattedDate = new Date(issue.createdAt).toLocaleDateString(
+        'en-GB',
+      );
+      const formattedDate2 = new Date(issue.updatedAt).toLocaleDateString(
+        'en-GB',
+      );
 
-    return `
+      return `
       <div class="issue-card bg-white rounded-lg cursor-pointer p-5 flex flex-col justify-between ${statusClass}" onclick="showDetails(${issue.id})">
         <div>
           <div class="flex justify-between items-center mb-4 gap-2">
@@ -123,26 +132,25 @@ function displayIssues(issues) {
 
       </div>
     `;
-  }).join('');
-};
+    })
+    .join('');
+}
 
 function getPriorityClass(priority) {
-  const baseStyle = "rounded-2xl px-6 py-1 font-semibold uppercase text-[14px]";
+  const baseStyle = 'rounded-2xl px-6 py-1 font-semibold uppercase text-[14px]';
 
   const colors = {
-    high: "text-[#ef4444] bg-[#FEECEC]",
-    medium: "text-[#f59e0b] bg-[#FFF6D1]",
-    low: "text-[#9ca3af] bg-[#eeeff2]"
+    high: 'text-[#ef4444] bg-[#FEECEC]',
+    medium: 'text-[#f59e0b] bg-[#FFF6D1]',
+    low: 'text-[#9ca3af] bg-[#eeeff2]',
   };
 
   const selectedColor = colors[priority] || colors.low;
 
   return `${selectedColor} ${baseStyle}`;
-};
-
+}
 
 function filterData(status) {
-
   const buttons = document.querySelectorAll('.tab-btn');
   const spinner = document.getElementById('loading-spinner');
   const grid = document.getElementById('issue-grid');
@@ -157,17 +165,15 @@ function filterData(status) {
     event.target.classList.remove('text-gray-500');
   }
 
-  grid.innerHTML = "";
+  grid.innerHTML = '';
   spinner.classList.remove('hidden');
 
   setTimeout(function () {
-
     let filteredIssues;
 
-    if (status === "all") {
+    if (status === 'all') {
       filteredIssues = allIssues;
-    }
-    else {
+    } else {
       filteredIssues = allIssues.filter(function (issue) {
         return issue.status === status;
       });
@@ -176,7 +182,6 @@ function filterData(status) {
     displayIssues(filteredIssues);
 
     spinner.classList.add('hidden');
-
   }, 300);
 }
 
@@ -185,7 +190,7 @@ async function handleSearch() {
   const spinner = document.getElementById('loading-spinner');
   const grid = document.getElementById('issue-grid');
 
-  if (query.trim() === "") {
+  if (query.trim() === '') {
     displayIssues(allIssues);
     return;
   }
@@ -194,18 +199,20 @@ async function handleSearch() {
   spinner.classList.remove('hidden');
 
   try {
-    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`);
+    const res = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${query}`,
+    );
     const result = await res.json();
 
-    if (result.status === "success" && result.data) {
+    if (result.status === 'success' && result.data) {
       displayIssues(result.data);
     }
   } catch (err) {
-    console.error("Search API Error:", err);
+    console.error('Search API Error:', err);
   } finally {
     spinner.classList.add('hidden');
   }
-};
+}
 
 const searchBtn = document.getElementById('search-btn');
 if (searchBtn) {
@@ -215,7 +222,7 @@ if (searchBtn) {
 const searchInput = document.getElementById('search-input');
 if (searchInput) {
   searchInput.addEventListener('input', (e) => {
-    if (e.target.value.trim() === "") {
+    if (e.target.value.trim() === '') {
       displayIssues(allIssues);
     }
   });
@@ -223,17 +230,20 @@ if (searchInput) {
   searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSearch();
   });
-};
+}
 
 async function showDetails(id) {
   const modal = document.getElementById('issue_modal');
   const content = document.getElementById('modal-content');
 
-  content.innerHTML = '<div class="flex justify-center py-10"><span class="loading loading-dots loading-lg"></span></div>';
+  content.innerHTML =
+    '<div class="flex justify-center py-10"><span class="loading loading-dots loading-lg"></span></div>';
   modal.showModal();
 
   try {
-    const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const res = await fetch(
+      `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`,
+    );
     const result = await res.json();
     const data = result.data;
 
@@ -267,6 +277,7 @@ async function showDetails(id) {
         </div>
     `;
   } catch (err) {
-    content.innerHTML = '<p class="text-red-500 text-center">Error loading details.</p>';
+    content.innerHTML =
+      '<p class="text-red-500 text-center">Error loading details.</p>';
   }
-};
+}
