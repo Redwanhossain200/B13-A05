@@ -5,7 +5,7 @@
 html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #00A96E50 transparent;
+  scrollbar-color: #00a96e50 transparent;
 }
 
 .active-tab {
@@ -18,7 +18,7 @@ html {
 }
 
 .tab-btn:hover:not(.active-tab) {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .issue-card {
@@ -33,11 +33,11 @@ html {
 }
 
 .status-badge-open {
-  border-top-color: #00A96E !important;
+  border-top-color: #00a96e !important;
 }
 
 .status-badge-closed {
-  border-top-color: #A855F7 !important;
+  border-top-color: #a855f7 !important;
 }
 
 .label-pill {
@@ -100,7 +100,7 @@ dialog[open] {
 }
 
 .header-animate {
-  background: linear-gradient(to right, #1E293B, #4a00ff, #A855F7, #1E293B);
+  background: linear-gradient(to right, #1e293b, #4a00ff, #a855f7, #1e293b);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
